@@ -2,7 +2,7 @@
     "name": "jordigradosgarcia/fizzbuzz",
     "autoload": {
         "psr-4": {
-            "Jordigradosgarcia\\Fizzbuzz\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
