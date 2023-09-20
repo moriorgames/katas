@@ -1,0 +1,17 @@
+{
+    "name": "jordigradosgarcia/fizzbuzz",
+    "autoload": {
+        "psr-4": {
+            "Jordigradosgarcia\\Fizzbuzz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Morior",
+            "email": "moriorgames@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}
