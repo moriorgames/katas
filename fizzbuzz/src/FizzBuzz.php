@@ -8,16 +8,31 @@ class FizzBuzz
 {
     public function execute(int $int): string
     {
-        if ($int % 15 === 0) {
+        if ($this->isDivisibleByThreeAndFive($int)) {
             return 'FizzBuzz';
         }
-        if ($int % 3 === 0) {
+        if ($this->isDivisibleByThree($int)) {
             return 'Fizz';
         }
-        if ($int % 5 === 0) {
+        if ($this->isDivisibleByFive($int)) {
             return 'Buzz';
         }
 
         return (string)$int;
+    }
+
+    private function isDivisibleByThree(int $int): bool
+    {
+        return $int % 3 === 0;
+    }
+
+    private function isDivisibleByFive(int $int): bool
+    {
+        return $int % 5 === 0;
+    }
+
+    private function isDivisibleByThreeAndFive(int $int): bool
+    {
+        return $int % 15 === 0;
     }
 }
