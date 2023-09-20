@@ -29,4 +29,9 @@ class FizzBuzzTest extends TestCase
     {
         $this->assertEquals('Buzz', $this->sut->execute(5));
     }
+
+    public function testDivisibleByThreeAndFive()
+    {
+        $this->assertEquals('FizzBuzz', $this->sut->execute(15));
+    }
 }

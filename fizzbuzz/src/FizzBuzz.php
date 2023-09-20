@@ -8,12 +8,16 @@ class FizzBuzz
 {
     public function execute(int $int): string
     {
+        if ($int % 15 === 0) {
+            return 'FizzBuzz';
+        }
         if ($int % 3 === 0) {
             return 'Fizz';
         }
         if ($int % 5 === 0) {
             return 'Buzz';
         }
+
         return (string)$int;
     }
 }
