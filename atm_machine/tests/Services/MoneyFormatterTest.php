@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Services;
 
 use App\Domain\Money;
+use App\Domain\MoneyType;
 use App\Services\MoneyFormatter;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
@@ -24,9 +25,8 @@ class MoneyFormatterTest extends TestCase
     public function testGivenAListOfMoneyWithOneSingularBillIsAbleToFormatIntoString()
     {
         $quantity = 1;
-        $type = 'bill';
         $amount = 200;
-        $money = new Money($quantity, $type, $amount);
+        $money = new Money($quantity, MoneyType::Bill, $amount);
         $listOfMoney = [
             $money,
         ];
@@ -39,9 +39,8 @@ class MoneyFormatterTest extends TestCase
     public function testGivenAListOfMoneyWithMultipleBillIsAbleToFormatIntoString()
     {
         $quantity = 2;
-        $type = 'bill';
         $amount = 200;
-        $money = new Money($quantity, $type, $amount);
+        $money = new Money($quantity, MoneyType::Bill, $amount);
         $listOfMoney = [
             $money,
         ];
@@ -54,21 +53,17 @@ class MoneyFormatterTest extends TestCase
     public function testGivenAListOfMoneyWithBillsAndCoinsShouldFormatIntoString()
     {
         $quantity = 2;
-        $type = 'bill';
         $amount = 200;
-        $money1 = new Money($quantity, $type, $amount);
+        $money1 = new Money($quantity, MoneyType::Bill, $amount);
         $quantity = 1;
-        $type = 'bill';
         $amount = 20;
-        $money2 = new Money($quantity, $type, $amount);
+        $money2 = new Money($quantity, MoneyType::Bill, $amount);
         $quantity = 1;
-        $type = 'bill';
         $amount = 10;
-        $money3 = new Money($quantity, $type, $amount);
+        $money3 = new Money($quantity, MoneyType::Bill, $amount);
         $quantity = 2;
-        $type = 'coin';
         $amount = 2;
-        $money4 = new Money($quantity, $type, $amount);
+        $money4 = new Money($quantity, MoneyType::Coin, $amount);
         $listOfMoney = [
             $money1, $money2, $money3, $money4,
         ];

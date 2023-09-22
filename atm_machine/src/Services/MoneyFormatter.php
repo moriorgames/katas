@@ -20,7 +20,7 @@ class MoneyFormatter
             if ($money->quantity > 1) {
                 $plural = 's';
             }
-            $output .= $money->quantity . ' ' . $money->type . $plural . ' of ' . $money->amount . '.' . PHP_EOL;
+            $output .= $money->quantity . ' ' . $money->type->value . $plural . ' of ' . $money->amount . '.' . PHP_EOL;
         }
 
         return $output;
