@@ -10,7 +10,8 @@ use App\Domain\Money;
 class BreakDownService
 {
     private const BREAK_ORDER = [
-        [AllowedAmount::AMOUNT_1]
+        AllowedAmount::AMOUNT_2,
+        AllowedAmount::AMOUNT_1,
     ];
 
     /**
@@ -19,6 +20,15 @@ class BreakDownService
      */
     public function break(int $quantity): array
     {
-        return [new Money($quantity, AllowedAmount::AMOUNT_1)];
+        $return = [];
+        /** @var AllowedAmount $order */
+        foreach (self::BREAK_ORDER as $order) {
+            if ($quantity === $order->value) {
+                $quantity = $quantity / $order->value;
+                $return[] = new Money($quantity, $order);
+            }
+        }
+
+        return $return;
     }
 }
