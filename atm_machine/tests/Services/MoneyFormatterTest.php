@@ -6,7 +6,6 @@ namespace Tests\Services;
 
 use App\Domain\AllowedAmount;
 use App\Domain\Money;
-use App\Domain\MoneyType;
 use App\Services\MoneyFormatter;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +22,7 @@ class MoneyFormatterTest extends TestCase
     public function testGivenAListOfMoneyWithOneSingularBillIsAbleToFormatIntoString()
     {
         $quantity = 1;
-        $money = new Money($quantity, MoneyType::Bill, AllowedAmount::AMOUNT_200);
+        $money = new Money($quantity, AllowedAmount::AMOUNT_200);
         $listOfMoney = [
             $money,
         ];
@@ -36,7 +35,7 @@ class MoneyFormatterTest extends TestCase
     public function testGivenAListOfMoneyWithMultipleBillIsAbleToFormatIntoString()
     {
         $quantity = 2;
-        $money = new Money($quantity, MoneyType::Bill, AllowedAmount::AMOUNT_200);
+        $money = new Money($quantity, AllowedAmount::AMOUNT_200);
         $listOfMoney = [
             $money,
         ];
@@ -49,13 +48,13 @@ class MoneyFormatterTest extends TestCase
     public function testGivenAListOfMoneyWithBillsAndCoinsShouldFormatIntoString()
     {
         $quantity = 2;
-        $money1 = new Money($quantity, MoneyType::Bill, AllowedAmount::AMOUNT_200);
+        $money1 = new Money($quantity, AllowedAmount::AMOUNT_200);
         $quantity = 1;
-        $money2 = new Money($quantity, MoneyType::Bill, AllowedAmount::AMOUNT_20);
+        $money2 = new Money($quantity, AllowedAmount::AMOUNT_20);
         $quantity = 1;
-        $money3 = new Money($quantity, MoneyType::Bill, AllowedAmount::AMOUNT_10);
+        $money3 = new Money($quantity, AllowedAmount::AMOUNT_10);
         $quantity = 2;
-        $money4 = new Money($quantity, MoneyType::Coin, AllowedAmount::AMOUNT_2);
+        $money4 = new Money($quantity, AllowedAmount::AMOUNT_2);
         $listOfMoney = [
             $money1, $money2, $money3, $money4,
         ];

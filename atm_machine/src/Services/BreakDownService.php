@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Domain\AllowedAmount;
 use App\Domain\Money;
-use App\Domain\MoneyType;
 
 class BreakDownService
 {
@@ -20,6 +19,6 @@ class BreakDownService
      */
     public function break(int $quantity): array
     {
-        return [new Money($quantity, MoneyType::Coin, AllowedAmount::AMOUNT_1)];
+        return [new Money($quantity, AllowedAmount::AMOUNT_1)];
     }
 }

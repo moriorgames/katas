@@ -6,7 +6,6 @@ namespace Tests\Services;
 
 use App\Domain\AllowedAmount;
 use App\Domain\Money;
-use App\Domain\MoneyType;
 use App\Services\BreakDownService;
 use PHPUnit\Framework\TestCase;
 
@@ -25,6 +24,6 @@ class BreakDownServiceTest extends TestCase
         $quantity = 1;
         $result = $this->sut->break($quantity);
 
-        $this->assertEquals(new Money(1, MoneyType::Coin, AllowedAmount::AMOUNT_1), $result[0]);
+        $this->assertEquals(new Money(1, AllowedAmount::AMOUNT_1), $result[0]);
     }
 }
