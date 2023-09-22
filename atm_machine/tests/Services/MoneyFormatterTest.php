@@ -9,12 +9,9 @@ use App\Domain\Money;
 use App\Domain\MoneyType;
 use App\Services\MoneyFormatter;
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
 
 class MoneyFormatterTest extends TestCase
 {
-    use ProphecyTrait;
-
     private MoneyFormatter $sut;
 
     protected function setUp(): void
