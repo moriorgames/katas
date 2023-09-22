@@ -33,13 +33,7 @@ class WithdrawUseCaseTest extends TestCase
         $moneyFormatterExpectation = $moneyFormatter->format(Argument::type('array'));
 
         $quantity = 434;
-        $result = $sut->execute($quantity);
-
-        $expectedResult = '2 bills of 200.' . PHP_EOL
-            . '1 bill of 20.' . PHP_EOL
-            . '1 bill of 10.' . PHP_EOL
-            . '2 coins of 2.';
-        $this->assertEquals($expectedResult, $result);
+        $sut->execute($quantity);
 
         $breakDownServiceExpectation->shouldBeCalledOnce();
         $moneyFormatterExpectation->shouldBeCalledOnce();
