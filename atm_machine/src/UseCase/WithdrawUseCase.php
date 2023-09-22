@@ -22,8 +22,10 @@ class WithdrawUseCase
      */
     public function execute(int $quantity): string
     {
-        $this->breakDownService->break($quantity); // @TODO return list of money
-        $this->moneyFormatter->format(); // @TODO Format list of money intro string
+
+        $this->moneyFormatter->format(
+            $this->breakDownService->break($quantity)
+        );
 
         return '2 bills of 200.' . PHP_EOL
             . '1 bill of 20.' . PHP_EOL

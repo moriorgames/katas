@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Tests\UseCase;
+
 use App\Services\BreakDownService;
 use App\Services\MoneyFormatter;
 use App\UseCase\WithdrawUseCase;
@@ -24,9 +26,11 @@ class WithdrawUseCaseTest extends TestCase
         );
 
         /** @var MethodProphecy $breakDownServiceExpectation */
-        $breakDownServiceExpectation = $breakDownService->break(Argument::type('int'));
+        $breakDownServiceExpectation = $breakDownService
+            ->break(Argument::type('int'))
+            ->willReturn([]);
         /** @var MethodProphecy $moneyFormatterExpectation */
-        $moneyFormatterExpectation = $moneyFormatter->format();
+        $moneyFormatterExpectation = $moneyFormatter->format(Argument::type('array'));
 
         $quantity = 434;
         $result = $sut->execute($quantity);

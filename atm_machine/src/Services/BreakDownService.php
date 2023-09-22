@@ -6,7 +6,8 @@ namespace App\Services;
 
 class BreakDownService
 {
-    public function break(int $quantity): void
+    public function break(int $quantity): array
     {
+        return [];
     }
 }
