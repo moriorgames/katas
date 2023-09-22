@@ -17,7 +17,7 @@ class WithdrawUseCase
      * @return string
      * @TODO this use case is not fully implemented
      */
-    public function execute(int $quantity)
+    public function execute(int $quantity): string
     {
         $this->breakDownService->break();
 
