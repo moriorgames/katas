@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 use App\Services\BreakDownService;
+use App\Services\MoneyFormatter;
 use App\UseCase\WithdrawUseCase;
 use PHPUnit\Framework\TestCase;
+use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\MethodProphecy;
 
@@ -15,10 +17,16 @@ class WithdrawUseCaseTest extends TestCase
     public function testUserWithdrawSomeQuantityAndReturnsStringContainingMoney()
     {
         $breakDownService = $this->prophesize(BreakDownService::class);
-        $sut = new WithdrawUseCase($breakDownService->reveal());
+        $moneyFormatter = $this->prophesize(MoneyFormatter::class);
+        $sut = new WithdrawUseCase(
+            $breakDownService->reveal(),
+            $moneyFormatter->reveal(),
+        );
 
         /** @var MethodProphecy $breakDownServiceExpectation */
-        $breakDownServiceExpectation = $breakDownService->break();
+        $breakDownServiceExpectation = $breakDownService->break(Argument::type('int'));
+        /** @var MethodProphecy $moneyFormatterExpectation */
+        $moneyFormatterExpectation = $moneyFormatter->format();
 
         $quantity = 434;
         $result = $sut->execute($quantity);
@@ -30,7 +38,6 @@ class WithdrawUseCaseTest extends TestCase
         $this->assertEquals($expectedResult, $result);
 
         $breakDownServiceExpectation->shouldBeCalledOnce();
-
-//        $moneyFormatterExpectation->shouldBeCalledOnce();
+        $moneyFormatterExpectation->shouldBeCalledOnce();
     }
 }

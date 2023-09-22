@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-class BreakDownService
+class MoneyFormatter
 {
-    public function break(int $quantity): void
+    public function format(): void
     {
     }
 }
