@@ -16,8 +16,11 @@ class MoneyFormatter
     {
         $output = '';
         foreach ($listOfMoney as $money) {
-            // @TODO we have to deal with singular plural
-            $output .= $money->quantity . ' ' . $money->type . ' of ' . $money->amount . '.' . PHP_EOL;
+            $plural = '';
+            if ($money->quantity > 1) {
+                $plural = 's';
+            }
+            $output .= $money->quantity . ' ' . $money->type . $plural . ' of ' . $money->amount . '.' . PHP_EOL;
         }
 
         return $output;

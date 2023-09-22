@@ -13,10 +13,16 @@ class MoneyFormatterTest extends TestCase
 {
     use ProphecyTrait;
 
+    private MoneyFormatter $sut;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->sut = new MoneyFormatter();
+    }
+
     public function testGivenAListOfMoneyWithOneSingularBillIsAbleToFormatIntoString()
     {
-        $sut = new MoneyFormatter();
-
         $quantity = 1;
         $type = 'bill';
         $amount = 200;
@@ -24,9 +30,24 @@ class MoneyFormatterTest extends TestCase
         $listOfMoney = [
             $money,
         ];
-        $result = $sut->format($listOfMoney);
+        $result = $this->sut->format($listOfMoney);
 
         $expectedResult = '1 bill of 200.' . PHP_EOL;
+        $this->assertEquals($expectedResult, $result);
+    }
+
+    public function testGivenAListOfMoneyWithMultipleBillIsAbleToFormatIntoString()
+    {
+        $quantity = 2;
+        $type = 'bill';
+        $amount = 200;
+        $money = new Money($quantity, $type, $amount);
+        $listOfMoney = [
+            $money,
+        ];
+        $result = $this->sut->format($listOfMoney);
+
+        $expectedResult = '2 bills of 200.' . PHP_EOL;
         $this->assertEquals($expectedResult, $result);
     }
 }
