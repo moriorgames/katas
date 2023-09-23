@@ -10,16 +10,16 @@ class Money
 
     /**
      * @param int $quantity
-     * @param AllowedAmount $amount
+     * @param Amount $amount
      */
-    public function __construct(public readonly int $quantity, public readonly AllowedAmount $amount)
+    public function __construct(public readonly int $quantity, public readonly Amount $amount)
     {
         $this->setType($this->amount);
     }
 
-    private function setType(AllowedAmount $amount): void
+    private function setType(Amount $amount): void
     {
-        if ($amount->value >= AllowedAmount::AMOUNT_10->value) {
+        if ($amount->value >= Amount::AMOUNT_10->value) {
             $this->type = MoneyType::Bill;
             return;
         }

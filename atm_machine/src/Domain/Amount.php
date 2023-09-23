@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain;
 
-enum AllowedAmount: int
+enum Amount: int
 {
     case AMOUNT_500 = 500;
     case AMOUNT_200 = 200;
