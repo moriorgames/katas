@@ -43,11 +43,47 @@ class BreakDownServiceTest extends TestCase
         $this->assertEquals(new Money(2, AllowedAmount::AMOUNT_2), $result[0]);
     }
 
-    public function testGivenFortyWillReturnTwentyCoinsOfTwo()
+    public function testGivenFortyWillReturnTwoBillsOfTwenty()
     {
         $quantity = 40;
         $result = $this->sut->break($quantity);
 
-        $this->assertEquals(new Money(20, AllowedAmount::AMOUNT_2), $result[0]);
+        $this->assertEquals(new Money(2, AllowedAmount::AMOUNT_20), $result[0]);
+    }
+
+    public function testGivenOneHundredWillReturnOneBillOfOneHundred()
+    {
+        $quantity = 100;
+        $result = $this->sut->break($quantity);
+
+        $this->assertEquals(new Money(1, AllowedAmount::AMOUNT_100), $result[0]);
+    }
+
+    public function testGivenFourHundredWillReturnTwoBillsOfTwoHundred()
+    {
+        $quantity = 400;
+        $result = $this->sut->break($quantity);
+
+        $this->assertEquals(new Money(2, AllowedAmount::AMOUNT_200), $result[0]);
+    }
+
+    public function testGivenThousandWillReturnTwoBillsOfFiveHundred()
+    {
+        $quantity = 1000;
+        $result = $this->sut->break($quantity);
+
+        $this->assertEquals(new Money(2, AllowedAmount::AMOUNT_500), $result[0]);
+    }
+
+    public function testGivenFourHundredFiftySixWillReturnCorrectListOfMoney()
+    {
+        $quantity = 456;
+        $result = $this->sut->break($quantity);
+
+        $this->assertEquals(new Money(2, AllowedAmount::AMOUNT_200), $result[0]);
+        $this->assertEquals(new Money(1, AllowedAmount::AMOUNT_50), $result[1]);
+        $this->assertEquals(new Money(1, AllowedAmount::AMOUNT_5), $result[2]);
+        $this->assertEquals(new Money(1, AllowedAmount::AMOUNT_1), $result[3]);
+        $this->assertArrayNotHasKey(4, $result);
     }
 }

@@ -10,6 +10,13 @@ use App\Domain\Money;
 class BreakDownService
 {
     private const BREAK_ORDER = [
+        AllowedAmount::AMOUNT_500,
+        AllowedAmount::AMOUNT_200,
+        AllowedAmount::AMOUNT_100,
+        AllowedAmount::AMOUNT_50,
+        AllowedAmount::AMOUNT_20,
+        AllowedAmount::AMOUNT_10,
+        AllowedAmount::AMOUNT_5,
         AllowedAmount::AMOUNT_2,
         AllowedAmount::AMOUNT_1,
     ];
