@@ -34,4 +34,20 @@ class BreakDownServiceTest extends TestCase
 
         $this->assertEquals(new Money(1, AllowedAmount::AMOUNT_2), $result[0]);
     }
+
+    public function testGivenFourWillReturnTwoCoinsOfTwo()
+    {
+        $quantity = 4;
+        $result = $this->sut->break($quantity);
+
+        $this->assertEquals(new Money(2, AllowedAmount::AMOUNT_2), $result[0]);
+    }
+
+    public function testGivenFortyWillReturnTwentyCoinsOfTwo()
+    {
+        $quantity = 40;
+        $result = $this->sut->break($quantity);
+
+        $this->assertEquals(new Money(20, AllowedAmount::AMOUNT_2), $result[0]);
+    }
 }
