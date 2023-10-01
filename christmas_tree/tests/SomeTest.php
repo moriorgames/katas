@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use App\Some;
-use App\SomeService;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
@@ -13,14 +11,15 @@ class SomeTest extends TestCase
 {
     use ProphecyTrait;
 
-    public function testFoo()
+    public function testPrintChristmasTreeOfHeight2()
     {
-        $someService = $this->prophesize(SomeService::class);
-        $someServiceExpectation = $someService->get()->willReturn(true);
+        print 'X';
 
-        $sut = new Some($someService->reveal());
+        $expectedString = <<< PRINT
+X
+PRINT;
 
-        $this->assertTrue($sut->foo());
-        $someServiceExpectation->shouldBeCalledOnce();
+
+        $this->expectOutputString($expectedString);
     }
 }
