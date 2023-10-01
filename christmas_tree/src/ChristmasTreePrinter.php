@@ -12,31 +12,29 @@ class ChristmasTreePrinter
         for ($y = 1; $y <= $height; $y++) {
             $padding = $height - $y;
             $fill = $y - 1;
-            for ($x = 0; $x < $padding; $x++) {
-                $output .= ' ';
-            }
-            for ($x = 0; $x < $fill; $x++) {
-                $output .= 'X';
-            }
+            $output .= $this->emptySpace($padding);
+            $output .= $this->fillTree($fill);
             $output .= 'X';
-            for ($x = 0; $x < $fill; $x++) {
-                $output .= 'X';
-            }
-            for ($x = 0; $x < $padding; $x++) {
-                $output .= ' ';
-            }
+            $output .= $this->fillTree($fill);
+            $output .= $this->emptySpace($padding);
             $output .= PHP_EOL;
         }
 
         $padding = $height - 1;
-        for ($x = 0; $x < $padding; $x++) {
-            $output .= ' ';
-        }
+        $output .= $this->emptySpace($padding);
         $output .= '|';
-        for ($x = 0; $x < $padding; $x++) {
-            $output .= ' ';
-        }
+        $output .= $this->emptySpace($padding);
 
         print  $output;
+    }
+
+    private function emptySpace(int $padding): string
+    {
+        return str_repeat(' ', $padding);
+    }
+
+    private function fillTree(int $fill): string
+    {
+        return str_repeat('X', $fill);
     }
 }
