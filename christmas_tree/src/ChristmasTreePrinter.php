@@ -6,10 +6,15 @@ namespace App;
 
 class ChristmasTreePrinter
 {
-    public function print()
+    public function print(int $height): void
     {
-        print ' X' . PHP_EOL
-            . 'XXX' . PHP_EOL
-            . ' |';
+        $output = '';
+        for ($y = 0; $y < $height; $y++) {
+            $output .= 'X';
+            $output .= PHP_EOL;
+        }
+        $output .= '|';
+
+        print  $output;
     }
 }

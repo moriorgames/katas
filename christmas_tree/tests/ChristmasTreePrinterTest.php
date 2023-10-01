@@ -12,17 +12,49 @@ class ChristmasTreePrinterTest extends TestCase
 {
     use ProphecyTrait;
 
-    public function testPrintChristmasTreeOfHeight2()
-    {
-        $sut = new ChristmasTreePrinter();
+    private ChristmasTreePrinter $sut;
 
-        $sut->print();
+    protected function setUp():void
+    {
+        parent::setUp();
+        $this->sut = new ChristmasTreePrinter();
+    }
+
+    public function testPrintChristmasTreeOfHeight1()
+    {
+        $height = 1;
+        $this->sut->print($height);
 
         $expectedString = <<< PRINT
- X
-XXX
- |
+X
+|
 PRINT;
         $this->expectOutputString($expectedString);
     }
+
+//    public function testPrintChristmasTreeOfHeight2()
+//    {
+//        $height = 2;
+//        $this->sut->print($height);
+//
+//        $expectedString = <<< PRINT
+// X
+//XXX
+// |
+//PRINT;
+//        $this->expectOutputString($expectedString);
+//    }
+//
+//    public function testPrintChristmasTreeOfHeight3()
+//    {
+//        $this->sut->print();
+//
+//        $expectedString = <<< PRINT
+//  X
+// XXX
+//XXXXX
+//  |
+//PRINT;
+//        $this->expectOutputString($expectedString);
+//    }
 }
