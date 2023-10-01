@@ -13,38 +13,38 @@ For example a tree with a height of 1 looks like this:
 
 ```
 X
-| 
+|
 ```
 
 For example a tree with a height of 2 looks like this:
 
 ```
- X
+ X 
 XXX
- | 
+ |  
 ```
 
 And a tree with a height of 3 looks like this:
 
 ```
-  X
- XXX
+  X  
+ XXX 
 XXXXX
-  | 
+  |  
 ```
 
 And a tree of height 10:
 
 ```
-         X
-        XXX
-       XXXXX
-      XXXXXXX
-     XXXXXXXXX
-    XXXXXXXXXXX
-   XXXXXXXXXXXXX
-  XXXXXXXXXXXXXXX
- XXXXXXXXXXXXXXXXX
+         X         
+        XXX        
+       XXXXX       
+      XXXXXXX      
+     XXXXXXXXX     
+    XXXXXXXXXXX    
+   XXXXXXXXXXXXX   
+  XXXXXXXXXXXXXXX  
+ XXXXXXXXXXXXXXXXX 
 XXXXXXXXXXXXXXXXXXX
-         | 
+         |         
 ```

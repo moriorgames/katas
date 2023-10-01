@@ -32,29 +32,51 @@ PRINT;
         $this->expectOutputString($expectedString);
     }
 
-//    public function testPrintChristmasTreeOfHeight2()
-//    {
-//        $height = 2;
-//        $this->sut->print($height);
-//
-//        $expectedString = <<< PRINT
-// X
-//XXX
-// |
-//PRINT;
-//        $this->expectOutputString($expectedString);
-//    }
-//
-//    public function testPrintChristmasTreeOfHeight3()
-//    {
-//        $this->sut->print();
-//
-//        $expectedString = <<< PRINT
-//  X
-// XXX
-//XXXXX
-//  |
-//PRINT;
-//        $this->expectOutputString($expectedString);
-//    }
+    public function testPrintChristmasTreeOfHeight2()
+    {
+        $height = 2;
+        $this->sut->print($height);
+
+        $expectedString = <<< PRINT
+ X 
+XXX
+ | 
+PRINT;
+        $this->expectOutputString($expectedString);
+    }
+
+    public function testPrintChristmasTreeOfHeight3()
+    {
+        $height = 3;
+        $this->sut->print($height);
+
+        $expectedString = <<< PRINT
+  X  
+ XXX 
+XXXXX
+  |  
+PRINT;
+        $this->expectOutputString($expectedString);
+    }
+
+    public function testPrintChristmasTreeOfHeight10()
+    {
+        $height = 10;
+        $this->sut->print($height);
+
+        $expectedString = <<< PRINT
+         X         
+        XXX        
+       XXXXX       
+      XXXXXXX      
+     XXXXXXXXX     
+    XXXXXXXXXXX    
+   XXXXXXXXXXXXX   
+  XXXXXXXXXXXXXXX  
+ XXXXXXXXXXXXXXXXX 
+XXXXXXXXXXXXXXXXXXX
+         |         
+PRINT;
+        $this->expectOutputString($expectedString);
+    }
 }
