@@ -12,19 +12,16 @@ class ChristmasTreePrinter
 
     public function print(int $height): void
     {
-        $output = '';
         for ($y = 1; $y <= $height; $y++) {
-            $output .= $this->emptySpace($height, $y);
-            $output .= $this->fillTree($y);
-            $output .= $this->emptySpace($height, $y);
-            $output .= PHP_EOL;
+            print $this->emptySpace($height, $y);
+            print $this->fillTree($y);
+            print $this->emptySpace($height, $y);
+            print PHP_EOL;
         }
 
-        $output .= $this->emptySpace($height, 1);
-        $output .= self::TREE_BASE;
-        $output .= $this->emptySpace($height, 1);
-
-        print  $output;
+        print $this->emptySpace($height, 1);
+        print self::TREE_BASE;
+        print $this->emptySpace($height, 1);
     }
 
     private function emptySpace(int $height, int $y): string
