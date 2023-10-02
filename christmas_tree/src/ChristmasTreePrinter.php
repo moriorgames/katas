@@ -6,6 +6,10 @@ namespace App;
 
 class ChristmasTreePrinter
 {
+    private const EMPTY = ' ';
+    private const TREE = 'X';
+    private const TREE_BASE = '|';
+
     public function print(int $height): void
     {
         $output = '';
@@ -17,7 +21,7 @@ class ChristmasTreePrinter
         }
 
         $output .= $this->emptySpace($height, 1);
-        $output .= '|';
+        $output .= self::TREE_BASE;
         $output .= $this->emptySpace($height, 1);
 
         print  $output;
@@ -26,12 +30,12 @@ class ChristmasTreePrinter
     private function emptySpace(int $height, int $y): string
     {
         $padding = $height - $y;
-        return str_repeat(' ', $padding);
+        return str_repeat(self::EMPTY, $padding);
     }
 
     private function fillTree(int $y): string
     {
         $fill = ($y - 1) * 2 + 1;
-        return str_repeat('X', $fill);
+        return str_repeat(self::TREE, $fill);
     }
 }
