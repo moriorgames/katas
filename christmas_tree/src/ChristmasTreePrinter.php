@@ -10,26 +10,25 @@ class ChristmasTreePrinter
     {
         $output = '';
         for ($y = 1; $y <= $height; $y++) {
-            $padding = $height - $y;
             $fill = $y - 1;
-            $output .= $this->emptySpace($padding);
+            $output .= $this->emptySpace($height, $y);
             $output .= $this->fillTree($fill);
             $output .= 'X';
             $output .= $this->fillTree($fill);
-            $output .= $this->emptySpace($padding);
+            $output .= $this->emptySpace($height, $y);
             $output .= PHP_EOL;
         }
 
-        $padding = $height - 1;
-        $output .= $this->emptySpace($padding);
+        $output .= $this->emptySpace($height, 1);
         $output .= '|';
-        $output .= $this->emptySpace($padding);
+        $output .= $this->emptySpace($height, 1);
 
         print  $output;
     }
 
-    private function emptySpace(int $padding): string
+    private function emptySpace(int $height, int $y): string
     {
+        $padding = $height - $y;
         return str_repeat(' ', $padding);
     }
 
